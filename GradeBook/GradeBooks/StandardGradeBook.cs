@@ -5,10 +5,10 @@ using System.Text;
 
 namespace GradeBook.GradeBooks
 {
-    public class StandartGradeBook :BaseGradeBook
+    public class StandardGradeBook :BaseGradeBook
     { 
         //adding isWeithe=t
-        public StandartGradeBook (string name ,bool isWeighted) : base(name, isWeighted)
+        public StandardGradeBook (string name ,bool isWeighted) : base(name, isWeighted)
         {
             Type = GradeBookType.Standard;
         }

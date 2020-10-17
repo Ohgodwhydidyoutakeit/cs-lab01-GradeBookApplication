@@ -50,8 +50,9 @@ namespace GradeBook.GradeBooks
             {
                 return 'F';
             }
-            //return base.GetLetterGrade(averageGrade);
+           // deleted the base 
         }
+
         public override void CalculateStatistics()
         {
             if(Students.Count < 5)
