@@ -8,17 +8,22 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace GradeBook.GradeBooks
-{
-    public class BaseGradeBook
+{   //changed to abstract
+    public abstract class BaseGradeBook
     {
         public string Name { get; set; }
         public List<Student> Students { get; set; }
         // add ' Type'
-         public GradeBookType Type { get; set; }
-        public BaseGradeBook(string name)
+        public GradeBookType Type { get; set; }
+        // add IsWeighted
+        public bool IsWeighted { get; set; }
+        //add previously added bool
+        public BaseGradeBook(string name, bool isWeighted)
         {
             Name = name;
             Students = new List<Student>();
+            //with small 1st letter
+            IsWeighted = isWeighted;
         }
 
         public void AddStudent(Student student)
@@ -264,7 +269,7 @@ namespace GradeBook.GradeBooks
                              from type in assembly.GetTypes()
                              where type.FullName == "GradeBook.GradeBooks.StandardGradeBook"
                              select type).FirstOrDefault();
-            
+
             return JsonConvert.DeserializeObject(json, gradebook);
         }
     }

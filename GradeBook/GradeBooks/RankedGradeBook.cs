@@ -9,7 +9,8 @@ namespace GradeBook.GradeBooks
 {
    public class RankedGradeBook : BaseGradeBook
     {
-        public RankedGradeBook(string name) : base(name)
+        //again updating isWaighted
+        public RankedGradeBook(string name, bool isWaighted) : base(name, isWaighted)
         {
             Type = GradeBookType.Ranked;
         }
@@ -49,7 +50,7 @@ namespace GradeBook.GradeBooks
             {
                 return 'F';
             }
-            return base.GetLetterGrade(averageGrade);
+            //return base.GetLetterGrade(averageGrade);
         }
         public override void CalculateStatistics()
         {
@@ -59,7 +60,17 @@ namespace GradeBook.GradeBooks
                 // escape the method if there are less then 5 students 
                 return;
             }
+            // 
             base.CalculateStatistics();
+        }
+        public override void CalculateStudentStatistics(string name)
+        {
+            if(Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+                return;
+            }
+            base.CalculateStudentStatistics(name);
         }
     }
 }
